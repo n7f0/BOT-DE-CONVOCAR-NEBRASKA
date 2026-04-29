@@ -33,5 +33,27 @@ const client = new Client({
     ],
 });
 
-// Cole aqui o restante do seu código completo do index.js enviado anteriormente
+// EVENTO: Quando o bot ficar online
+client.once('ready', () => {
+    console.log(`✅ Bot está online como ${client.user.tag}`);
+});
+
+// EVENTO: Quando receber uma mensagem
+client.on('messageCreate', async (message) => {
+    if (message.author.bot) return;
+    
+    // COMANDO EXEMPLO
+    if (message.content === '!ping') {
+        await message.reply('Pong! 🏓');
+    }
+    
+    if (message.content === '!teste') {
+        await message.reply('Bot funcionando!');
+    }
+});
+
+// Coloque AQUI todo o resto do seu código do bot
+// (comandos de áudio, moderação, etc.)
+
+// Login do bot
 client.login(process.env.DISCORD_TOKEN);
